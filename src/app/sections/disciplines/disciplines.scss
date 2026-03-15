@@ -1,0 +1,47 @@
+.disciplines {
+  padding: 6rem 0;
+  background: linear-gradient(to bottom, #0a0a0a, #050505);
+}
+
+.disciplines h2 {
+  margin-top: 0.8rem;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+}
+
+.disciplines-grid {
+  margin-top: 2.5rem;
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 1.5rem;
+}
+
+.discipline-card {
+  padding: 2rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.04);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  transition: transform 0.25s ease, border-color 0.25s ease;
+}
+
+.discipline-card:hover {
+  transform: translateY(-6px);
+  border-color: rgba(255, 77, 77, 0.4);
+}
+
+.discipline-card h3 {
+  margin-top: 0;
+  margin-bottom: 1rem;
+  font-size: 1.4rem;
+}
+
+.discipline-card p {
+  margin: 0;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+@media (max-width: 900px) {
+  .disciplines-grid {
+    grid-template-columns: 1fr;
+  }
+}

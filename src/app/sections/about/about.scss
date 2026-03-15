@@ -1,0 +1,37 @@
+.about {
+  padding: 6rem 0;
+  background: #0a0a0a;
+}
+
+.about-grid {
+  display: grid;
+  grid-template-columns: 0.95fr 1.05fr;
+  gap: 3rem;
+  align-items: start;
+}
+
+
+.about h2 {
+  margin-top: 0.8rem;
+  margin-bottom: 0;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.05;
+}
+
+.about-text p {
+  margin: 0 0 1.25rem;
+  line-height: 1.85;
+  color: rgba(255, 255, 255, 0.75);
+  font-size: 1.02rem;
+}
+
+.about-text p:last-child {
+  margin-bottom: 0;
+}
+
+@media (max-width: 900px) {
+  .about-grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}

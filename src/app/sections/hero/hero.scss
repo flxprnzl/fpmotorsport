@@ -1,0 +1,76 @@
+.hero {
+  position: relative;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  padding: 0 2rem;
+  background: url('/assets/images/hero/nordschleife-hero.jpg') center/cover no-repeat;
+}
+
+
+.overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to bottom,
+    rgba(0, 0, 0, 0.45),
+    rgba(0, 0, 0, 0.75)
+  );
+}
+
+.hero-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+}
+
+.eyebrow {
+  color: #ff4d4d;
+  text-transform: uppercase;
+  letter-spacing: 0.25rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.hero h1 {
+  margin: 0.5rem 0 0;
+  font-size: clamp(3rem, 8vw, 6rem);
+  line-height: 0.95;
+}
+
+.hero h2 {
+  margin-top: 1rem;
+  font-size: 1.5rem;
+  font-weight: 400;
+  color: rgba(255, 255, 255, 0.85);
+}
+
+.intro {
+  margin-top: 1.5rem;
+  max-width: 650px;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.75);
+}
+
+.hero-actions {
+  display: flex;
+  gap: 1rem;
+  margin-top: 2rem;
+}
+
+.btn {
+  padding: 0.9rem 1.4rem;
+  border-radius: 999px;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.btn.primary {
+  background: #e53935;
+  color: white;
+}
+
+.btn.secondary {
+  border: 1px solid rgba(255, 255, 255, 0.2);
+  color: white;
+}

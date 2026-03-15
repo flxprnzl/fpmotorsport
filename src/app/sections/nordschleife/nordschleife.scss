@@ -1,0 +1,114 @@
+.nordschleife {
+  position: relative;
+  min-height: 75vh;
+  display: flex;
+  align-items: center;
+  background: url('/assets/images/nordschleife/nordschleife-bg.jpg') center/cover no-repeat;
+}
+
+
+.nordschleife .overlay {
+  position: absolute;
+  inset: 0;
+  background: linear-gradient(
+    to right,
+    rgba(0, 0, 0, 0.82),
+    rgba(0, 0, 0, 0.55)
+  );
+}
+
+.nordschleife-content {
+  position: relative;
+  z-index: 1;
+  max-width: 800px;
+  padding: 5rem 0;
+}
+
+.section-label {
+  color: #ff4d4d;
+  text-transform: uppercase;
+  letter-spacing: 0.2rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+}
+
+.nordschleife h2 {
+  margin-top: 0.8rem;
+  font-size: clamp(2rem, 4vw, 4rem);
+  line-height: 1.05;
+}
+
+.nordschleife p:last-child {
+  margin-top: 1.5rem;
+  line-height: 1.8;
+  color: rgba(255, 255, 255, 0.78);
+  font-size: 1rem;
+}
+
+/* Tablet */
+@media (max-width: 900px) {
+  .nordschleife {
+    min-height: 65vh;
+    background-position: center;
+  }
+
+  .nordschleife-content {
+    max-width: 100%;
+    padding: 4rem 0;
+  }
+
+  .nordschleife h2 {
+    font-size: clamp(1.9rem, 5vw, 3rem);
+  }
+}
+
+/* Mobile */
+@media (max-width: 768px) {
+  .nordschleife {
+    min-height: auto;
+    padding: 4rem 0;
+    align-items: flex-end;
+    background-position: center;
+  }
+
+  .nordschleife .overlay {
+    background: linear-gradient(
+      to top,
+      rgba(0, 0, 0, 0.9),
+      rgba(0, 0, 0, 0.55)
+    );
+  }
+
+  .nordschleife-content {
+    padding: 2rem 0;
+  }
+
+  .nordschleife h2 {
+    margin-top: 0.7rem;
+    line-height: 1.1;
+  }
+
+  .nordschleife p:last-child {
+    font-size: 0.98rem;
+    line-height: 1.7;
+  }
+}
+
+/* Sehr kleine Geräte */
+@media (max-width: 480px) {
+  .nordschleife {
+    padding: 3.5rem 0;
+  }
+
+  .nordschleife-content {
+    padding: 1.5rem 0;
+  }
+
+  .nordschleife h2 {
+    font-size: 1.9rem;
+  }
+
+  .nordschleife p:last-child {
+    font-size: 0.95rem;
+  }
+}
