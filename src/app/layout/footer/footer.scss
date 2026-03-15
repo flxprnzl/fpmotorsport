@@ -106,3 +106,14 @@
     align-items: flex-start;
   }
 }
+
+.ring-icon {
+  width: 26px;
+  height: 26px;
+  object-fit: contain;
+  transition: 0.25s ease;
+}
+
+.social-link:hover .ring-icon {
+  transform: scale(1.1);
+}
