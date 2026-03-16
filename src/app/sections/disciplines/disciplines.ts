@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
+import { RevealOnScroll } from '../../shared/directives/reveal-on-scroll';
 
 @Component({
   selector: 'app-disciplines',
-  imports: [],
+  imports: [RevealOnScroll],
   templateUrl: './disciplines.html',
   styleUrl: './disciplines.scss',
 })
