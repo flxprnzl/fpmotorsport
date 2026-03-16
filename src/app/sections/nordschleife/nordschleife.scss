@@ -6,14 +6,13 @@
   background: url('/assets/images/nordschleife/nordschleife-bg.jpg') center/cover no-repeat;
 }
 
-
 .nordschleife .overlay {
   position: absolute;
   inset: 0;
   background: linear-gradient(
     to right,
-    rgba(0, 0, 0, 0.82),
-    rgba(0, 0, 0, 0.55)
+    rgba(0, 0, 0, 0.78),
+    rgba(0, 0, 0, 0.48)
   );
 }
 
@@ -24,12 +23,14 @@
   padding: 5rem 0;
 }
 
-.section-label {
-  color: #ff4d4d;
-  text-transform: uppercase;
-  letter-spacing: 0.2rem;
-  font-size: 0.85rem;
-  font-weight: 600;
+.nordschleife-panel {
+  padding: 2rem;
+  border-radius: 28px;
+  background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 22px 55px rgba(0, 0, 0, 0.26);
 }
 
 .nordschleife h2 {
@@ -55,6 +56,11 @@
   .nordschleife-content {
     max-width: 100%;
     padding: 4rem 0;
+  }
+
+  .nordschleife-panel {
+    padding: 1.75rem;
+    border-radius: 24px;
   }
 
   .nordschleife h2 {
@@ -83,6 +89,14 @@
     padding: 2rem 0;
   }
 
+  .nordschleife-panel {
+    padding: 1.5rem;
+    border-radius: 22px;
+    background: rgba(255, 255, 255, 0.07);
+    backdrop-filter: blur(16px);
+    -webkit-backdrop-filter: blur(16px);
+  }
+
   .nordschleife h2 {
     margin-top: 0.7rem;
     line-height: 1.1;
@@ -102,6 +116,11 @@
 
   .nordschleife-content {
     padding: 1.5rem 0;
+  }
+
+  .nordschleife-panel {
+    padding: 1.2rem;
+    border-radius: 18px;
   }
 
   .nordschleife h2 {

@@ -4,9 +4,11 @@
   left: 0;
   width: 100%;
   z-index: 1000;
-  background: rgba(10, 10, 10, 0.78);
-  backdrop-filter: blur(14px);
+  background: rgba(10, 10, 10, 0.58);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
   border-bottom: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 35px rgba(0, 0, 0, 0.22);
 }
 
 .navbar-inner {
@@ -36,7 +38,7 @@
   color: rgba(255, 255, 255, 0.76);
   text-decoration: none;
   font-weight: 500;
-  transition: color 0.2s ease;
+  transition: color 0.2s ease, opacity 0.2s ease;
 }
 
 .desktop-nav a:hover,
@@ -49,14 +51,22 @@
   width: 46px;
   height: 46px;
   padding: 0;
-  border: 0;
-  border-radius: 12px;
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 14px;
   background: rgba(255, 255, 255, 0.06);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
   cursor: pointer;
   align-items: center;
   justify-content: center;
   flex-direction: column;
   gap: 5px;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.menu-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  transform: translateY(-1px);
 }
 
 .menu-toggle span {
@@ -70,14 +80,48 @@
 .mobile-menu {
   display: none;
   flex-direction: column;
-  gap: 1rem;
-  padding: 0 1.5rem 1.5rem;
-  background: rgba(10, 10, 10, 0.96);
-  border-top: 1px solid rgba(255, 255, 255, 0.06);
+  gap: 0.75rem;
+  padding: 1rem 1.25rem 1.25rem;
+  margin: 0 1rem 1rem;
+  background: rgba(15, 15, 15, 0.62);
+  backdrop-filter: blur(18px);
+  -webkit-backdrop-filter: blur(18px);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  border-radius: 20px;
+  box-shadow: 0 18px 40px rgba(0, 0, 0, 0.24);
 }
 
 .mobile-menu a {
   font-size: 1rem;
+  padding: 0.85rem 1rem;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.03);
+  transition:
+    background 0.2s ease,
+    color 0.2s ease,
+    transform 0.2s ease;
+}
+
+.mobile-menu a:hover {
+  background: rgba(255, 255, 255, 0.08);
+  color: #fff;
+  transform: translateX(2px);
+}
+
+.mobile-menu {
+  opacity: 0;
+  transform: translateY(-8px);
+  pointer-events: none;
+  transition:
+    opacity 0.25s ease,
+    transform 0.25s ease;
+}
+
+.mobile-menu.open {
+  display: flex;
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
 }
 
 @media (max-width: 900px) {
