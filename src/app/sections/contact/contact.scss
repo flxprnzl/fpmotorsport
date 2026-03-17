@@ -20,6 +20,7 @@
 .contact h2 {
   margin-top: 0.8rem;
   font-size: clamp(2rem, 4vw, 3.5rem);
+  line-height: 1.08;
 }
 
 .contact-text p:last-child {
@@ -31,28 +32,6 @@
   display: flex;
   justify-content: center;
   align-items: center;
-}
-
-.contact-button {
-  display: inline-block;
-  padding: 1rem 1.6rem;
-  border-radius: 999px;
-  background: rgba(229, 57, 53, 0.95);
-  color: #fff;
-  text-decoration: none;
-  font-weight: 600;
-  border: 1px solid rgba(255, 255, 255, 0.08);
-  box-shadow: 0 10px 24px rgba(229, 57, 53, 0.16);
-  transition:
-    transform 0.25s ease,
-    background-color 0.25s ease,
-    box-shadow 0.25s ease;
-}
-
-.contact-button:hover {
-  background: #f44336;
-  transform: translate3d(0, -2px, 0);
-  box-shadow: 0 14px 28px rgba(244, 67, 54, 0.2);
 }
 
 @media (max-width: 900px) {
