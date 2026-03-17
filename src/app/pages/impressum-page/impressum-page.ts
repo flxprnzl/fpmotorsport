@@ -7,6 +7,6 @@ import { Footer } from '../../layout/footer/footer';
   standalone: true,
   imports: [Navbar, Footer],
   templateUrl: './impressum-page.html',
-  styleUrl: './impressum-page.scss'
+  styleUrl: './impressum-page.scss',
 })
 export class ImpressumPage {}
