@@ -1,10 +1,11 @@
 import {
   Directive,
   ElementRef,
+  OnDestroy,
   OnInit,
+  PLATFORM_ID,
   Renderer2,
   inject,
-  PLATFORM_ID,
 } from '@angular/core';
 import { isPlatformBrowser } from '@angular/common';
 
@@ -12,15 +13,17 @@ import { isPlatformBrowser } from '@angular/common';
   selector: '[appRevealOnScroll]',
   standalone: true,
 })
-export class RevealOnScroll implements OnInit {
-  private el = inject(ElementRef);
+export class RevealOnScroll implements OnInit, OnDestroy {
+  private el = inject(ElementRef<HTMLElement>);
   private renderer = inject(Renderer2);
   private platformId = inject(PLATFORM_ID);
+  private observer?: IntersectionObserver;
 
   ngOnInit(): void {
     this.renderer.addClass(this.el.nativeElement, 'reveal');
 
     if (!isPlatformBrowser(this.platformId)) {
+      this.renderer.addClass(this.el.nativeElement, 'revealed');
       return;
     }
 
@@ -29,18 +32,25 @@ export class RevealOnScroll implements OnInit {
       return;
     }
 
-    const observer = new IntersectionObserver(
+    this.observer = new IntersectionObserver(
       ([entry]) => {
         if (entry.isIntersecting) {
           this.renderer.addClass(this.el.nativeElement, 'revealed');
-          observer.unobserve(this.el.nativeElement);
+          this.observer?.unobserve(this.el.nativeElement);
+          this.observer?.disconnect();
+          this.observer = undefined;
         }
       },
       {
-        threshold: 0.15,
+        threshold: 0.1,
+        rootMargin: '0px 0px -10% 0px',
       }
     );
 
-    observer.observe(this.el.nativeElement);
+    this.observer.observe(this.el.nativeElement);
+  }
+
+  ngOnDestroy(): void {
+    this.observer?.disconnect();
   }
 }
