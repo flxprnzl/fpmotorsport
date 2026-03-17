@@ -4,13 +4,60 @@
   background: linear-gradient(to bottom, #050505, #0a0a0a);
 }
 
-.legal-page h1 {
-  margin-top: 0.8rem;
-  font-size: clamp(2.5rem, 5vw, 4rem);
+.legal-container {
+  max-width: 980px;
 }
 
-.legal-page p {
+.legal-page h1 {
+  margin-top: 0.8rem;
+  margin-bottom: 2rem;
+  font-size: clamp(2.5rem, 5vw, 4rem);
+  line-height: 1.05;
+}
+
+.legal-card,
+.legal-section {
+  padding: 1.6rem;
+  border-radius: 24px;
+  background: rgba(255, 255, 255, 0.045);
+  border: 1px solid rgba(255, 255, 255, 0.08);
+  box-shadow: 0 10px 24px rgba(0, 0, 0, 0.16);
+}
+
+.legal-card {
+  margin-bottom: 1.5rem;
+}
+
+.legal-section {
+  margin-bottom: 1rem;
+}
+
+.legal-section h2 {
+  margin: 0 0 0.9rem;
+  font-size: 1.2rem;
+  color: #fff;
+}
+
+.legal-page p,
+.legal-page li {
   max-width: 850px;
   line-height: 1.8;
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.78);
+}
+
+.legal-list {
+  margin: 0.75rem 0 1rem 1.2rem;
+  padding: 0;
+}
+
+@media (max-width: 768px) {
+  .legal-page {
+    padding: 8rem 0 5rem;
+  }
+
+  .legal-card,
+  .legal-section {
+    padding: 1.25rem;
+    border-radius: 20px;
+  }
 }
