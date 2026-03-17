@@ -1,40 +1,34 @@
-<section id="gallery" class="gallery reveal-group" appRevealOnScroll>
-  <div class="container">
+<section id="gallery" class="gallery">
+  <div class="container reveal-group" appRevealOnScroll>
     <p class="section-label">Galerie</p>
     <h2>Einblicke in Motorsport, SimRacing und Nordschleife</h2>
 
     <div class="gallery-grid">
-      <div class="gallery-card large reveal-item stagger-1">
-        <img src="assets/images/gallery/gallery-1.jpg" alt="Motorsport" />
-        <div class="gallery-overlay">
-          <h3>Trackdays</h3>
-          <p>Streckenpraxis und Entwicklung auf dem Track.</p>
-        </div>
-      </div>
+      @for (card of cards; track card.key; let i = $index) {
+        <div
+          class="gallery-card reveal-item"
+          [class.large]="card.large"
+          [class.stagger-1]="i === 0"
+          [class.stagger-2]="i === 1"
+          [class.stagger-3]="i === 2"
+          [class.stagger-4]="i === 3"
+        >
+          <img
+            [ngSrc]="card.image"
+            [alt]="card.alt"
+            width="900"
+            height="700"
+            sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 33vw"
+            loading="lazy"
+            decoding="async"
+          />
 
-      <div class="gallery-card reveal-item stagger-2">
-        <img src="assets/images/gallery/gallery-2.jpg" alt="SimRacing" />
-        <div class="gallery-overlay">
-          <h3>SimRacing</h3>
-          <p>Virtuelles Training für Konstanz und Präzision.</p>
+          <div class="gallery-overlay">
+            <h3>{{ card.title }}</h3>
+            <p>{{ card.text }}</p>
+          </div>
         </div>
-      </div>
-
-      <div class="gallery-card reveal-item stagger-3">
-        <img src="assets/images/gallery/gallery-3.jpg" alt="Nordschleife" />
-        <div class="gallery-overlay">
-          <h3>Nordschleife</h3>
-          <p>Touristenfahrten und Lernerfahrung Runde für Runde.</p>
-        </div>
-      </div>
-
-      <div class="gallery-card reveal-item stagger-4">
-        <img src="assets/images/gallery/gallery-4.jpg" alt="ACV Slalom" />
-        <div class="gallery-overlay">
-          <h3>ACV Slalom</h3>
-          <p>Fahrzeugkontrolle, Reaktion und saubere Linien.</p>
-        </div>
-      </div>
+      }
     </div>
   </div>
 </section>

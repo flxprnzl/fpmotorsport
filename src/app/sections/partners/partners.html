@@ -1,40 +1,32 @@
-<section id="partners" class="partners reveal-group" appRevealOnScroll>
-  <div class="container">
+<section id="partners" class="partners">
+  <div class="container reveal-group" appRevealOnScroll>
     <p class="section-label">Partner</p>
     <h2>Partner und Unterstützer</h2>
 
     <div class="partners-grid">
-      <a href="https://www.finanzforum.net/" target="_blank" class="partner reveal-item stagger-1">
-        <img src="assets/images/partners/partner-1.png" alt="Finanz Forum GmbH">
-      </a>
-
-      <a href="https://www.friesenbiene.de/" target="_blank" class="partner reveal-item stagger-2">
-        <img src="assets/images/partners/partner-2.png" alt="Friesenbiene">
-      </a>
-
-      <a href="https://www.teamschirmerparts.com/" target="_blank" class="partner reveal-item stagger-3">
-        <img src="assets/images/partners/partner-3.avif" alt="Team Schirmer">
-      </a>
-
-      <a href="https://voss-competition.de/" target="_blank" class="partner reveal-item stagger-4">
-        <img src="assets/images/partners/partner-4.png" alt="Voss Competition">
-      </a>
-
-      <a href="https://simracing-koeln.de/" target="_blank" class="partner reveal-item stagger-5">
-        <img src="assets/images/partners/partner-5.png" alt="SimRacing VR ONE">
-      </a>
-
-      <a href="https://www.friedestrom.de/" target="_blank" class="partner reveal-item stagger-1">
-        <img src="assets/images/partners/partner-6.png" alt="Hotel Schloss Friedestrom">
-      </a>
-
-      <a href="https://www.acv.de/ueber-uns/acv-im-motorsport/automobilslalom-einsteiger-cup/" target="_blank" class="partner reveal-item stagger-2">
-        <img src="assets/images/partners/partner-7.png" alt="ACV Einsteiger Slalom">
-      </a>
-
-      <a href="https://www.instagram.com/speedpartsperformance" target="_blank" class="partner reveal-item stagger-3">
-        <img src="assets/images/partners/partner-8.png" alt="Speed Parts Performance">
-      </a>
+      @for (partner of partners; track partner.name; let i = $index) {
+        <a
+          [href]="partner.url"
+          target="_blank"
+          rel="noopener"
+          class="partner reveal-item"
+          [class.stagger-1]="i % 5 === 0"
+          [class.stagger-2]="i % 5 === 1"
+          [class.stagger-3]="i % 5 === 2"
+          [class.stagger-4]="i % 5 === 3"
+          [class.stagger-5]="i % 5 === 4"
+        >
+          <img
+            [ngSrc]="partner.image"
+            [alt]="partner.alt"
+            width="280"
+            height="140"
+            sizes="(max-width: 500px) 100vw, (max-width: 900px) 50vw, 25vw"
+            loading="lazy"
+            decoding="async"
+          />
+        </a>
+      }
     </div>
   </div>
 </section>
