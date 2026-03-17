@@ -1,31 +1,51 @@
-<header class="navbar">
-  <div class="container navbar-inner">
-    <div class="logo">FP Motorsport</div>
+<header class="navbar" [class.scrolled]="scrolled">
+  <div class="container navbar-shell">
+    <div class="navbar-inner">
+      <a href="#hero" class="logo-wrap" (click)="setActive('hero')">
+        <span class="logo-mark">FP</span>
+        <div class="logo-text">
+          <span class="logo-title">FP Motorsport</span>
+          <span class="logo-subtitle">Driving Progress</span>
+        </div>
+      </a>
 
-    <nav class="nav-links desktop-nav">
-      <a href="#hero">Home</a>
-      <a href="#about">About</a>
-      <a href="#disciplines">Disziplinen</a>
-      <a href="#nordschleife">Nordschleife</a>
-      <a href="#gallery">Galerie</a>
-      <a href="#partners">Partner</a>
-      <a href="#contact">Kontakt</a>
-    </nav>
+      <nav class="nav-links desktop-nav" aria-label="Hauptnavigation">
+        @for (item of navItems; track item.id) {
+          <a
+            [href]="item.href"
+            class="nav-link"
+            [class.active]="activeSection === item.id"
+            (click)="setActive(item.id)"
+          >
+            <span>{{ item.label }}</span>
+          </a>
+        }
+      </nav>
 
-    <button class="menu-toggle" (click)="toggleMenu()" aria-label="Menü öffnen">
-      <span></span>
-      <span></span>
-      <span></span>
-    </button>
-  </div>
+      <button
+        class="menu-toggle"
+        type="button"
+        (click)="toggleMenu()"
+        [attr.aria-expanded]="menuOpen"
+        aria-label="Menü öffnen"
+      >
+        <span [class.open]="menuOpen"></span>
+        <span [class.open]="menuOpen"></span>
+        <span [class.open]="menuOpen"></span>
+      </button>
+    </div>
 
-  <div class="mobile-menu" [class.open]="menuOpen">
-    <a href="#hero" (click)="closeMenu()">Home</a>
-    <a href="#about" (click)="closeMenu()">About</a>
-    <a href="#disciplines" (click)="closeMenu()">Disziplinen</a>
-    <a href="#nordschleife" (click)="closeMenu()">Nordschleife</a>
-    <a href="#gallery" (click)="closeMenu()">Galerie</a>
-    <a href="#partners" (click)="closeMenu()">Partner</a>  
-    <a href="#contact" (click)="closeMenu()">Kontakt</a>
+    <div class="mobile-menu" [class.open]="menuOpen">
+      @for (item of navItems; track item.id) {
+        <a
+          [href]="item.href"
+          class="mobile-link"
+          [class.active]="activeSection === item.id"
+          (click)="setActive(item.id)"
+        >
+          {{ item.label }}
+        </a>
+      }
+    </div>
   </div>
 </header>
