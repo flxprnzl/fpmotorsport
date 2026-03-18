@@ -19,8 +19,8 @@
           <img
             [ngSrc]="partner.image"
             [alt]="partner.alt"
-            width="280"
-            height="140"
+            [width]="partner.width"
+            [height]="partner.height"
             sizes="(max-width: 500px) 100vw, (max-width: 900px) 50vw, 25vw"
             loading="lazy"
             decoding="async"
