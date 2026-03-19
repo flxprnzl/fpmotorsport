@@ -78,7 +78,7 @@ export class Gallery {
 
   openCategory(card: GalleryCard): void {
     this.activeCard = card;
-    document.body.style.overflow = 'hidden'; // Kein Scroll im Hintergrund
+    document.body.style.overflow = 'hidden';
   }
 
   openImage(image: GalleryImage, index: number): void {
