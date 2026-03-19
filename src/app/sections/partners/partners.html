@@ -1,29 +1,42 @@
 <section id="partners" class="partners">
-  <div class="container reveal-group" appRevealOnScroll>
+  <div class="container" appRevealOnScroll>
     <p class="section-label">Partner</p>
     <h2>Partner und Unterstützer</h2>
+  </div>
 
-    <div class="partners-grid">
-      @for (partner of partners; track partner.name; let i = $index) {
+  <div class="marquee-wrapper">
+    <div class="marquee-track">
+      <!-- Doppelt für nahtlosen Loop -->
+      @for (partner of partners; track partner.name) {
         <a
           [href]="partner.url"
           target="_blank"
           rel="noopener"
-          class="partner reveal-item"
-          [class.stagger-1]="i % 5 === 0"
-          [class.stagger-2]="i % 5 === 1"
-          [class.stagger-3]="i % 5 === 2"
-          [class.stagger-4]="i % 5 === 3"
-          [class.stagger-5]="i % 5 === 4"
+          class="partner"
         >
           <img
             [ngSrc]="partner.image"
             [alt]="partner.alt"
             [width]="partner.width"
             [height]="partner.height"
-            sizes="(max-width: 500px) 100vw, (max-width: 900px) 50vw, 25vw"
             loading="lazy"
-            decoding="async"
+          />
+        </a>
+      }
+      <!-- Kopie für nahtlosen Loop -->
+      @for (partner of partners; track partner.name + '_copy') {
+        <a
+          [href]="partner.url"
+          target="_blank"
+          rel="noopener"
+          class="partner"
+        >
+          <img
+            [ngSrc]="partner.image"
+            [alt]="partner.alt"
+            [width]="partner.width"
+            [height]="partner.height"
+            loading="lazy"
           />
         </a>
       }

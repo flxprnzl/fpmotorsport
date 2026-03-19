@@ -1,94 +1,68 @@
 .partners {
   padding: 6rem 0;
   background: #050505;
+  overflow: hidden;
 }
 
 .partners h2 {
   margin-top: 0.8rem;
+  margin-bottom: 3rem;
   font-size: clamp(2rem, 4vw, 3.5rem);
 }
 
-.partners-grid {
-  margin-top: 2.5rem;
+.marquee-wrapper {
+  overflow: hidden;
+  /* Sanfter Fade an den Rändern */
+  mask-image: linear-gradient(
+    to right,
+    transparent 0%,
+    black 10%,
+    black 90%,
+    transparent 100%
+  );
+}
+
+.marquee-track {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1.25rem;
   align-items: center;
+  gap: 1.5rem;
+  width: max-content;
+  animation: marquee 25s linear infinite;
+}
+
+.marquee-track:hover {
+  animation-play-state: paused; /* Stoppt bei Hover */
 }
 
 .partner {
   display: inline-flex;
   justify-content: center;
   align-items: center;
-  width: fit-content;
-  min-width: 0;
-  padding: 1rem 1.25rem;
+  flex-shrink: 0;
+  padding: 1rem 1.5rem;
   border-radius: 18px;
   background: rgba(255, 255, 255, 0.045);
-  backdrop-filter: blur(4px);
-  -webkit-backdrop-filter: blur(4px);
   border: 1px solid rgba(255, 255, 255, 0.07);
-  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.14);
   transition:
-    transform 0.25s ease,
-    background-color 0.25s ease,
-    border-color 0.25s ease,
-    box-shadow 0.25s ease;
+    background 0.25s ease,
+    border-color 0.25s ease;
 }
 
 .partner img {
   width: auto;
   height: auto;
-  max-width: 220px;
-  max-height: 72px;
+  max-width: 180px;
+  max-height: 65px;
   object-fit: contain;
   filter: grayscale(100%) brightness(0.9);
-  transition:
-    transform 0.25s ease,
-    filter 0.25s ease;
-}
-
-.partner:hover {
-  transform: translate3d(0, -3px, 0);
-  background: rgba(255, 255, 255, 0.07);
-  border-color: rgba(255, 77, 77, 0.14);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.18);
+  transition: filter 0.25s ease;
 }
 
 .partner:hover img {
   filter: none;
-  transform: scale(1.02);
 }
 
-/* Tablet */
-@media (max-width: 900px) {
-  .partners-grid {
-    gap: 1rem;
-  }
-
-  .partner {
-    padding: 0.9rem 1.1rem;
-  }
-
-  .partner img {
-    max-width: 180px;
-    max-height: 64px;
-  }
-}
-
-/* Mobile */
-@media (max-width: 500px) {
-  .partners-grid {
-    gap: 0.85rem;
-  }
-
-  .partner {
-    padding: 0.85rem 1rem;
-    border-radius: 16px;
-  }
-
-  .partner img {
-    max-width: 150px;
-    max-height: 56px;
-  }
+@keyframes marquee {
+  from { transform: translateX(0); }
+  to   { transform: translateX(-50%); }
 }

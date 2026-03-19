@@ -9,15 +9,71 @@
       Dann schreib mir gerne eine Nachricht.
     </p>
 
-    <form class="contact-form">
-      <input type="text" placeholder="Name" />
-      <input type="email" placeholder="E-Mail" />
-      <input type="text" placeholder="Betreff" />
-      <textarea rows="7" placeholder="Nachricht"></textarea>
+    <form class="contact-form" #contactForm="ngForm" (ngSubmit)="onSubmit(contactForm)" novalidate>
 
-      <button type="submit" class="fp-button fp-button-primary">
-        Nachricht senden
+      <div class="field-group">
+        <input
+          name="name" type="text" placeholder="Name"
+          ngModel required minlength="2"
+          #nameField="ngModel"
+          [class.invalid]="nameField.invalid && nameField.touched"
+        />
+        <span class="error-msg" *ngIf="nameField.invalid && nameField.touched">
+          Bitte gib deinen Namen ein.
+        </span>
+      </div>
+
+      <div class="field-group">
+        <input
+          name="email" type="email" placeholder="E-Mail"
+          ngModel required email
+          #emailField="ngModel"
+          [class.invalid]="emailField.invalid && emailField.touched"
+        />
+        <span class="error-msg" *ngIf="emailField.invalid && emailField.touched">
+          Bitte gib eine gültige E-Mail-Adresse ein.
+        </span>
+      </div>
+
+      <div class="field-group">
+        <input
+          name="subject" type="text" placeholder="Betreff"
+          ngModel required
+          #subjectField="ngModel"
+          [class.invalid]="subjectField.invalid && subjectField.touched"
+        />
+        <span class="error-msg" *ngIf="subjectField.invalid && subjectField.touched">
+          Bitte gib einen Betreff ein.
+        </span>
+      </div>
+
+      <div class="field-group">
+        <textarea
+          name="message" rows="7" placeholder="Nachricht"
+          ngModel required minlength="10"
+          #messageField="ngModel"
+          [class.invalid]="messageField.invalid && messageField.touched"
+        ></textarea>
+        <span class="error-msg" *ngIf="messageField.invalid && messageField.touched">
+          Bitte schreib mindestens 10 Zeichen.
+        </span>
+      </div>
+
+      <div class="feedback success" *ngIf="status() === 'success'">
+        ✅ Nachricht erfolgreich gesendet! Ich melde mich bald bei dir.
+      </div>
+      <div class="feedback error" *ngIf="status() === 'error'">
+        ❌ Etwas ist schiefgelaufen. Bitte versuch es erneut.
+      </div>
+
+      <button
+        type="submit"
+        class="fp-button fp-button-primary"
+        [disabled]="status() === 'loading'"
+      >
+        {{ status() === 'loading' ? 'Wird gesendet…' : 'Nachricht senden' }}
       </button>
+
     </form>
   </div>
 </section>
