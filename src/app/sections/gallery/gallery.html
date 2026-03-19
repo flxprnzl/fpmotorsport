@@ -12,16 +12,27 @@
           [class.stagger-2]="i === 1"
           [class.stagger-3]="i === 2"
           [class.stagger-4]="i === 3"
+          (click)="openCategory(card)"
+          role="button"
+          [attr.aria-label]="'Galerie ' + card.title + ' öffnen'"
+          tabindex="0"
+          (keydown.enter)="openCategory(card)"
         >
           <img
             [ngSrc]="card.image"
             [alt]="card.alt"
             width="900"
-            height="700"
+            height="600"
             sizes="(max-width: 700px) 100vw, (max-width: 1000px) 50vw, 33vw"
             loading="lazy"
             decoding="async"
           />
+
+          <!-- Hover Hint -->
+          <div class="gallery-card-hint">
+            <span class="hint-icon">🖼</span>
+            <span>{{ card.images.length }} Bilder ansehen</span>
+          </div>
 
           <div class="gallery-overlay">
             <h3>{{ card.title }}</h3>
@@ -32,3 +43,101 @@
     </div>
   </div>
 </section>
+
+<!-- ── EBENE 1: Kategorie Overlay ── -->
+@if (activeCard) {
+  <div
+    class="lightbox-backdrop"
+    (click)="closeCategory()"
+    role="dialog"
+    aria-modal="true"
+  >
+    <div class="lightbox-panel" (click)="$event.stopPropagation()">
+
+      <!-- Header -->
+      <div class="lightbox-header">
+        <h2>{{ activeCard.title }}</h2>
+        <button class="close-btn" (click)="closeCategory()" aria-label="Schließen">✕</button>
+      </div>
+
+      <!-- Bilder Grid -->
+      <div class="lightbox-grid">
+        @for (image of activeCard.images; track image.src; let i = $index) {
+          <div
+            class="lightbox-thumb"
+            (click)="openImage(image, i)"
+            role="button"
+            tabindex="0"
+            (keydown.enter)="openImage(image, i)"
+            [attr.aria-label]="image.alt"
+          >
+            <img
+              [src]="image.src"
+              [alt]="image.alt"
+              loading="lazy"
+              decoding="async"
+            />
+            <div class="lightbox-thumb-overlay">
+              <span>🔍</span>
+            </div>
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+}
+
+<!-- ── EBENE 2: Einzelbild Fullscreen ── -->
+@if (activeImage && activeCard) {
+  <div
+    class="fullscreen-backdrop"
+    (click)="closeImage()"
+    role="dialog"
+    aria-modal="true"
+  >
+    <div class="fullscreen-panel" (click)="$event.stopPropagation()">
+
+      <!-- Header -->
+      <div class="fullscreen-header">
+        <button class="back-btn" (click)="closeImage()" aria-label="Zurück">
+          ← {{ activeCard.title }}
+        </button>
+        <span class="image-counter">
+          {{ activeImageIndex + 1 }} / {{ activeCard.images.length }}
+        </span>
+        <button class="close-btn" (click)="closeCategory()" aria-label="Schließen">✕</button>
+      </div>
+
+      <!-- Hauptbild -->
+      <div class="fullscreen-main">
+        <button class="nav-btn prev" (click)="prevImage()" aria-label="Vorheriges Bild">‹</button>
+
+        <div class="fullscreen-image-wrap">
+          <img
+            [src]="activeImage.src"
+            [alt]="activeImage.alt"
+            loading="eager"
+            decoding="async"
+          />
+        </div>
+
+        <button class="nav-btn next" (click)="nextImage()" aria-label="Nächstes Bild">›</button>
+      </div>
+
+      <!-- Thumbnail Strip -->
+      <div class="fullscreen-thumbs">
+        @for (image of activeCard.images; track image.src; let i = $index) {
+          <div
+            class="thumb-strip-item"
+            [class.active]="i === activeImageIndex"
+            (click)="openImage(image, i)"
+            role="button"
+            tabindex="0"
+          >
+            <img [src]="image.src" [alt]="image.alt" loading="lazy" />
+          </div>
+        }
+      </div>
+    </div>
+  </div>
+}
