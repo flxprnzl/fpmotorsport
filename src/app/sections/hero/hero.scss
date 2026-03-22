@@ -4,12 +4,32 @@
   display: flex;
   align-items: center;
   padding: 0 2rem;
-  background: url('/assets/images/hero/nordschleife-hero.jpg') center/cover no-repeat;
+}
+
+.hero-slides {
+  position: absolute;
+  inset: 0;
+  z-index: 0;
+}
+
+.hero-slide {
+  position: absolute;
+  inset: 0;
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
+  opacity: 0;
+  transition: opacity 1.2s ease-in-out;
+
+  &.active {
+    opacity: 1;
+  }
 }
 
 .overlay {
   position: absolute;
   inset: 0;
+  z-index: 1;
   background: linear-gradient(
     to bottom,
     rgba(0, 0, 0, 0.45),
@@ -19,7 +39,7 @@
 
 .hero-content {
   position: relative;
-  z-index: 1;
+  z-index: 2;
   max-width: 760px;
 }
 
@@ -29,25 +49,11 @@
   animation: heroFadeUp 0.8s ease forwards;
 }
 
-.hero-content .eyebrow {
-  animation-delay: 0.1s;
-}
-
-.hero-content h1 {
-  animation-delay: 0.2s;
-}
-
-.hero-content h2 {
-  animation-delay: 0.35s;
-}
-
-.hero-content .intro {
-  animation-delay: 0.5s;
-}
-
-.hero-content .hero-actions {
-  animation-delay: 0.65s;
-}
+.hero-content .eyebrow   { animation-delay: 0.1s;  }
+.hero-content h1         { animation-delay: 0.2s;  }
+.hero-content h2         { animation-delay: 0.35s; }
+.hero-content .intro     { animation-delay: 0.5s;  }
+.hero-content .hero-actions { animation-delay: 0.65s; }
 
 @keyframes heroFadeUp {
   to {
@@ -89,6 +95,32 @@
   flex-wrap: wrap;
   gap: 1rem;
   margin-top: 2rem;
+}
+
+.slide-indicators {
+  position: absolute;
+  bottom: 2rem;
+  left: 50%;
+  transform: translateX(-50%);
+  display: flex;
+  gap: 0.6rem;
+  z-index: 3;
+}
+
+.indicator {
+  width: 28px;
+  height: 3px;
+  border-radius: 2px;
+  border: none;
+  background: rgba(255, 255, 255, 0.3);
+  cursor: pointer;
+  transition: background 0.3s, width 0.3s;
+  padding: 0;
+
+  &.active {
+    background: #ff4d4d;
+    width: 48px;
+  }
 }
 
 @media (max-width: 768px) {

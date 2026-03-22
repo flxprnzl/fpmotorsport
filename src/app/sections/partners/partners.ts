@@ -78,7 +78,7 @@ export class Partners {
     },
     {
       name: 'Speed Parts Performance',
-      url: 'https://www.instagram.com/speedpartsperformance',
+      url: 'https://www.speedpartsperformance.de/',
       image: 'assets/images/partners/partner-8.png',
       alt: 'Speed Parts Performance',
       width: 2082,
