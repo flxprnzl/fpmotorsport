@@ -1,4 +1,15 @@
 <section id="hero" class="hero hero-loaded">
+
+  <div class="hero-slides">
+    @for (img of images; track img; let i = $index) {
+      <div
+        class="hero-slide"
+        [class.active]="i === activeIndex"
+        [style.background-image]="'url(' + img + ')'"
+      ></div>
+    }
+  </div>
+
   <div class="overlay"></div>
 
   <div class="hero-content">
@@ -15,4 +26,16 @@
       <a href="#about" class="fp-button fp-button-secondary">Mehr erfahren</a>
     </div>
   </div>
+
+  <div class="slide-indicators">
+    @for (img of images; track img; let i = $index) {
+      <button
+        class="indicator"
+        [class.active]="i === activeIndex"
+        (click)="activeIndex = i"
+        [attr.aria-label]="'Bild ' + (i + 1)"
+      ></button>
+    }
+  </div>
+
 </section>

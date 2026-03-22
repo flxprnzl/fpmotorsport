@@ -1,22 +1,79 @@
 <section id="about" class="about">
-  <div class="container about-grid" appRevealOnScroll>
-    <div class="about-intro">
-      <p class="section-label">About</p>
-      <h2>Motorsport, Fahrgefühl und konstante Weiterentwicklung</h2>
-    </div>
+  <div class="container" appRevealOnScroll>
 
-    <div class="about-text">
-      <p>
-        Ich fahre im ACV Einsteiger Slalom, betreibe SimRacing und sammle
-        regelmäßig reale Streckenerfahrung bei Touristenfahrten und Trackdays
-        auf der Nürburgring Nordschleife.
-      </p>
+    <div class="about-wrapper">
+      <div class="about-image-col">
+        <div
+          class="reveal-container"
+          (mousemove)="onMouseMove($event)"
+          (mouseleave)="onMouseLeave()"
+          (mouseenter)="onMouseEnter()"
+        >
+          <img
+            class="base-image"
+            src="assets/images/about/felix.jpg"
+            alt="Felix Prenzel"
+          />
 
-      <p>
-        Mein Fokus liegt auf sauberer Fahrzeugkontrolle, technischem Verständnis
-        und der kontinuierlichen Weiterentwicklung als Fahrer – auf der Strecke
-        und im Simulator.
-      </p>
+          <div
+            class="racing-reveal"
+            [style.opacity]="isHovering ? 1 : 0"
+            [style.--cx.px]="cursorX"
+            [style.--cy.px]="cursorY"
+          >
+            <img
+              src="assets/images/about/felix-racing.jpg"
+              alt="Felix Prenzel Rennfahrer"
+            />
+          </div>
+
+          <div class="image-label" [class.hidden]="isHovering">
+            <span>🏎 Hover für Racing-Mode</span>
+          </div>
+        </div>
+
+        <div class="stat-badges">
+          <div class="badge">
+            <span class="badge-num">3+</span>
+            <span class="badge-label">Jahre Nordschleife</span>
+          </div>
+          <div class="badge">
+            <span class="badge-num">ACV</span>
+            <span class="badge-label">Einsteiger Slalom</span>
+          </div>
+          <div class="badge">
+            <span class="badge-num">∞</span>
+            <span class="badge-label">SimRacing Runden</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="about-text-col">
+        <p class="section-label">About</p>
+        <h2>Motorsport, Fahrgefühl und konstante Weiterentwicklung</h2>
+
+        <div class="about-divider"></div>
+
+        <p>
+          Ich fahre im ACV Einsteiger Slalom, betreibe SimRacing und sammle
+          regelmäßig reale Streckenerfahrung bei Touristenfahrten und Trackdays
+          auf der Nürburgring Nordschleife.
+        </p>
+        <p>
+          Mein Fokus liegt auf sauberer Fahrzeugkontrolle, technischem Verständnis
+          und der kontinuierlichen Weiterentwicklung als Fahrer – auf der Strecke
+          und im Simulator.
+        </p>
+
+        <div class="about-tags">
+          <span class="tag">Nordschleife</span>
+          <span class="tag">ACV Slalom</span>
+          <span class="tag">SimRacing</span>
+          <span class="tag">Trackdays</span>
+          <span class="tag">BMW E36</span>
+        </div>
+      </div>
+
     </div>
   </div>
 </section>
