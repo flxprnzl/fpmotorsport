@@ -4,8 +4,9 @@
     @for (img of images; track img; let i = $index) {
       <div
         class="hero-slide"
-        [class.active]="i === activeIndex"
         [style.background-image]="'url(' + img + ')'"
+        [style.animation-delay]="'-' + (i * 5) + 's'"
+        [style.z-index]="images.length - i"
       ></div>
     }
   </div>
@@ -20,22 +21,10 @@
       Ich kombiniere realen Motorsport mit digitalem Training und entwickle mich
       über Slalom, SimRacing und Nordschleifen-Praxis kontinuierlich weiter.
     </p>
-
     <div class="hero-actions">
       <a href="#contact" class="fp-button fp-button-primary">Kontakt</a>
       <a href="#about" class="fp-button fp-button-secondary">Mehr erfahren</a>
     </div>
-  </div>
-
-  <div class="slide-indicators">
-    @for (img of images; track img; let i = $index) {
-      <button
-        class="indicator"
-        [class.active]="i === activeIndex"
-        (click)="activeIndex = i"
-        [attr.aria-label]="'Bild ' + (i + 1)"
-      ></button>
-    }
   </div>
 
 </section>
