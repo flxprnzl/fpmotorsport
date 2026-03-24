@@ -12,6 +12,7 @@
   z-index: 0;
 }
 
+// Gesamtdauer = 6 Bilder × 5s = 30s
 .hero-slide {
   position: absolute;
   inset: 0;
@@ -19,11 +20,15 @@
   background-position: center;
   background-repeat: no-repeat;
   opacity: 0;
-  transition: opacity 1.2s ease-in-out;
+  animation: slideShow 30s linear infinite;
+}
 
-  &.active {
-    opacity: 1;
-  }
+@keyframes slideShow {
+  0%    { opacity: 0; }
+  3%    { opacity: 1; }   // einblenden
+  20%   { opacity: 1; }   // sichtbar (~5s von 30s)
+  23%   { opacity: 0; }   // ausblenden
+  100%  { opacity: 0; }
 }
 
 .overlay {
